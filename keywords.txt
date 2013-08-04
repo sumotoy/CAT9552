@@ -1,0 +1,24 @@
+#######################################
+# Syntax Coloring Map For CAT9552
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+CAT9552	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+blinkRate	KEYWORD2
+update	KEYWORD2
+allLedOn	KEYWORD2
+allLedOff	KEYWORD2
+setLed	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+CAT9552_LEDSTATE	LITERAL1
