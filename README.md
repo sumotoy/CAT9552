@@ -3,6 +3,15 @@ CAT9552
 
 An Arduino/Teensy3 library for ON semiconductors CAT 9552 led driver
 
+This chip ha 2 internal timers so every single led can be:
+ - off
+ - on
+ - blinking 1 (as timer1 settings)
+ - blinking 2 (as timer2 settings)
+
+The chip works in I2C and library take care of everithing, see example.
+
+Chip description
 
 The CAT9552 is a 16−channel, parallel input/output port expander
 optimized for LED On/Off and blinking control. Each individual LED
