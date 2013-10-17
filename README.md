@@ -3,7 +3,8 @@ CAT9552
 
 An Arduino/Teensy3 library for ON semiconductors CAT 9552 led driver
 
-This chip ha 2 internal timers so every single led can be:
+This chip has 2 internal timers so every single led can be:
+
  - off
  - on
  - blinking 1 (as timer1 settings)
