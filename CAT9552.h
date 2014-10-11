@@ -8,10 +8,10 @@
 CAT9552 Library
 ----------------------------------------
 A fast C library for CAT9552 chip drived with I2C
-version 2.0
+version 2.1b2 - Compatible(?) with Energia IDE (Stellaris, etc.)
 coded by Max MC Costa
 --------------------------------------------------------
-Library works with most arduino compatible processors and teensy3
+Library works with most arduino compatible processors and teensy3 (and ENERGIA Stellaris, etc)
 BUGLIST
 
 */
@@ -19,7 +19,11 @@ BUGLIST
 #ifndef CAT9552_H
 #define CAT9552_H
 
+#if defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
+#include "Energia.h"
+#else
 #include "Arduino.h"
+#endif
 
 /* CAT9552 ----------------------------------*/
 //Command Registers

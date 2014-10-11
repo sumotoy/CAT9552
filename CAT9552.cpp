@@ -8,7 +8,7 @@
 CAT9552 Library
 ----------------------------------------
 A fast C library for CAT9552 chip drived with I2C
-version 2.01
+version 2.0
 coded by Max MC Costa
 --------------------------------------------------------
 Library works with most arduino compatible processors and teensy3
