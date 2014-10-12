@@ -8,7 +8,7 @@
 CAT9552 Library
 ----------------------------------------
 A fast C library for CAT9552 chip drived with I2C
-version 2.0
+version 2.1b6
 coded by Max MC Costa
 --------------------------------------------------------
 Library works with most arduino compatible processors and teensy3
@@ -26,8 +26,17 @@ CAT9552::CAT9552(const byte address)
 }
 
 
-void CAT9552::begin(void)
+void CAT9552::begin(boolean avoidInit)
 {
+	if (!avoidInit){
+		#if !defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
+			Wire.begin();
+			TWBR = ((F_CPU / 400000L) - 16) / 2;//I2C a 400Khz
+		#else
+			Wire.setModule(3);
+			Wire.begin();
+		#endif
+	}
 	for (byte i=0;i<4;i++){
 		CAT9552_LEDSTATE[i] = 0x55;
 	}

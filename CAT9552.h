@@ -8,7 +8,7 @@
 CAT9552 Library
 ----------------------------------------
 A fast C library for CAT9552 chip drived with I2C
-version 2.1b2 - Compatible(?) with Energia IDE (Stellaris, etc.)
+version 2.1b6 - Compatible(?) with Energia IDE (Stellaris, etc.)
 coded by Max MC Costa
 --------------------------------------------------------
 Library works with most arduino compatible processors and teensy3 (and ENERGIA Stellaris, etc)
@@ -48,7 +48,7 @@ private:
 	byte CAT9552_LEDSTATE[4];
 public:
 	CAT9552(const byte address);
-	void begin(void);
+	void begin(boolean avoidInit=true);
 	void blinkRate(uint8_t reg,uint8_t pfreq,uint8_t pwm);
 	void update(void);
 	void allLedOn(bool fupdate=1);
