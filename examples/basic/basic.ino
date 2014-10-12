@@ -6,12 +6,7 @@
 CAT9552 leds = CAT9552(CAT9552__ADDR0);
 
 void setup(void) {
-  Wire.begin();
-  #if !defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
-  TWBR = ((F_CPU / 400000L) - 16) / 2;//I2C a 400Khz
-  #endif
-
-  leds.begin();
+  leds.begin(false);//if false will initialize I2C as well
   leds.blinkRate(0,40,128);
   leds.blinkRate(1,20,128);
   delay(200);
