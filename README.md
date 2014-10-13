@@ -1,7 +1,8 @@
 CAT9552
 =======
 
-An easy Arduino/Teensy3 library for ON semiconductors CAT 9552 led driver
+An easy Arduino/Teensy3/Energia library for ON semiconductors CAT 9552 led driver.
+Tested with Arduino/Teensy3.x, not with Energia, btw it compiles.
 
 This chip has 2 internal timers so every single led can be:
 
