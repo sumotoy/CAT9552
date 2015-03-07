@@ -8,7 +8,7 @@
 CAT9552 Library
 ----------------------------------------
 A fast C library for CAT9552 chip drived with I2C
-version 2.1b6
+version 2.0
 coded by Max MC Costa
 --------------------------------------------------------
 Library works with most arduino compatible processors and teensy3
@@ -26,17 +26,8 @@ CAT9552::CAT9552(const byte address)
 }
 
 
-void CAT9552::begin(boolean avoidInit)
+void CAT9552::begin(void)
 {
-	if (!avoidInit){
-		#if !defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
-			Wire.begin();
-			TWBR = ((F_CPU / 400000L) - 16) / 2;//I2C a 400Khz
-		#else
-			Wire.setModule(3);
-			Wire.begin();
-		#endif
-	}
 	for (byte i=0;i<4;i++){
 		CAT9552_LEDSTATE[i] = 0x55;
 	}
@@ -54,28 +45,17 @@ void CAT9552::blinkRate(uint8_t reg,uint8_t pfreq,uint8_t pwm){
   }
   bitSet(commandRegister,4);//set bit4=1 to enable autoincrement
   Wire.beginTransmission(_address);
-#if ARDUINO < 100
-  Wire.send(commandRegister);
-  Wire.send(pfreq);//PSCx Frequency Prescaler 0 = 0 ->lower is faster blink ->default was 256 = 44hz
-  Wire.send(pwm);//PWMx PWM Register 0 = 128 //default - 50% duty cycle
-#else
   Wire.write(commandRegister);
   Wire.write(pfreq);//PSCx Frequency Prescaler 0 = 0 ->lower is faster blink ->default was 256 = 44hz
   Wire.write(pwm);//PWMx PWM Register 0 = 128 //default - 50% duty cycle
-#endif
   Wire.endTransmission();
 }
 
 void CAT9552::update(void){
   for(byte i = 0; i < 4; i++){
     Wire.beginTransmission(_address);
-#if ARDUINO < 100
-    Wire.send((0x06 + i)); 
-    Wire.send(CAT9552_LEDSTATE[i]);
-#else
     Wire.write((0x06 + i)); 
     Wire.write(CAT9552_LEDSTATE[i]);
-#endif
     Wire.endTransmission();
   }
 }
