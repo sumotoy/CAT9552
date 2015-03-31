@@ -8,7 +8,7 @@
 CAT9552 Library
 ----------------------------------------
 A fast C library for CAT9552 chip drived with I2C
-version 2.0
+version 2.1
 coded by Max MC Costa
 --------------------------------------------------------
 Library works with most arduino compatible processors and teensy3
@@ -34,25 +34,23 @@ BUGLIST
 #define CAT9552_LS1     B00000111 //[R/W]  LED 4-7
 #define CAT9552_LS2     B00001000 //[R/W]  LED 8-11
 #define CAT9552_LS3     B00001001 //[R/W]  LED 12-15
-const byte ledCode_l[4] = {0,0,1,1};//left
-const byte ledCode_r[4] = {1,0,0,1};//right
+static const uint8_t ledCode_l[4] = {0,0,1,1};//left
+static const uint8_t ledCode_r[4] = {1,0,0,1};//right
 
 class CAT9552
 {
-private:
-	byte _address;
-	byte CAT9552_LEDSTATE[4];
+
 public:
-	CAT9552(const byte address);
-	void begin(void);
+	CAT9552(const uint8_t address);
+	void begin(bool avoid=false);
 	void blinkRate(uint8_t reg,uint8_t pfreq,uint8_t pwm);
 	void update(void);
 	void allLedOn(bool fupdate=1);
 	void allLedOff(bool fupdate=1);
-	void setLed(uint8_t led,byte state);
-
-
-
+	void setLed(uint8_t led,uint8_t state);
+private:
+	uint8_t _address;
+	uint8_t _ledState[4];
 };
 
 #endif	// sumoDots.h
