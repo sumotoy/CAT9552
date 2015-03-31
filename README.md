@@ -12,8 +12,7 @@ This chip has 2 internal timers so every single led can be:
  - blinking 2 (as timer2 settings)
 
 The chip works in I2C and library take care of everithing, see example.
-Please note that I2C initializations are outside library (to prevent multiple initializations) so check the example for
-more infos.
+Please note that I2C initializations are outside library (to prevent multiple initializations) so check the example for more infos. It can be used as GPO (no input)!
 
 Chip description
 
